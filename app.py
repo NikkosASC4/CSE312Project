@@ -1,8 +1,8 @@
-import os
-
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymongo
 import bcrypt
+import os
+
 mongo_client = pymongo.MongoClient("mongo")
 db = mongo_client["cse312"]
 
@@ -19,7 +19,12 @@ def index():
 #     return 'Hello, world!'
 @app.route('/register', methods=["GET", "POST"])
 def register_page():
-    return 'Hello, world!'
+    return render_template('auth/registration.html')
+
+
+@app.route('/settings')
+def settings():
+    return "hi"
 
 
 if __name__ == "__main__":

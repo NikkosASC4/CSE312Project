@@ -1,23 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>CSE312 Sample Front End</title>
-    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <meta charset="UTF-8">
+    <title>User Registration Login</title>
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body onload="welcome();">
-
-<h1>CSE312 Sample Page</h1>
-
-<p id="paragraph">
-    This text is from the HTML file 🙂
-</p>
-
-<p>
-    Here's a flamingo:
-</p>
-
-<img src="image/flamingo.jpg" alt="It's a flamingo" class="my_image"/>
-
-
-<script src="functions.js"></script>
+<body>
+{% block content %}
+    {# Template inserted here #}
+{% endblock %}
 </body>
 </html>
