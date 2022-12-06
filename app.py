@@ -7,6 +7,7 @@ import os
 mongo_client = pymongo.MongoClient("mongo")
 db = mongo_client["cse312"]
 userAccounts = db["accounts"]
+authTokens = db["tokens"]
 
 app = Flask(__name__)
 
@@ -27,9 +28,14 @@ def login_page():
           if user in account.get('username'):
               pswrd = account.get('password')
               if bcrypt.checkpw(password, pswrd) == True:
-                  return redirect(url_for('home_page'))
-              else:
-                  return redirect(url_for('index'))
+                  response = redirect(url_for('home_page'))
+                  token = 'XwQrT' + str(random.randint(0, 1000))
+                  hashedToken = hashlib.sha1(token.encode()).digest()
+                  authTokens.insert_one({"authtoken": hashedToken, "username": username})
+                  response.set_cookie('authToken', hashedToken)
+                  return response
+          else:
+              return redirect(url_for('index'))
     else:
         return render_template('auth/login.html')
 
