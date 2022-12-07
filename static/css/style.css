@@ -10,34 +10,6 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-label {
-  font-size: 15px;
-  line-height: 30px;
-  color: #fff;
-
-}
-
-input {
-  font-size: 14px;
-  color: #fff;
-  background-color: #e75e8d;
-  padding: 12px 30px;
-  margin-top: 1vw;
-  display: inline-block;
-  border-radius: 25px;
-  font-weight: 400;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
-  transition: all .3s;
-  position: relative;
-  overflow: hidden;
-}
-
-input:hover {
-  background-color: #fff;
-  color: blue;
-}
-
 a {
 	color: #fff;
   text-decoration: none !important;
@@ -49,8 +21,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 30px;
-  margin-left: 150px;
+  margin-left: 500px;
 }
 
 h2, h3, h4, h5, h6 {
@@ -75,9 +46,12 @@ p {
   color: #fff;
 }
 
-.my_image {
-  width: 120px;
-  overflow: hidden;
+.container{
+  max-width: 1700px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: rgb(92, 84, 141);
 }
 
 .navbar{
@@ -94,18 +68,12 @@ nav{
 nav ul{
   display: inline-block;
   list-style-type: none;
+  margin-top: 5px;
 }
 
 nav ul li{
   display: inline-block;
   margin-right: 20px;
-}
-
-.container{
-  max-width: 1300px;
-  margin: auto;
-  padding-left: 25px;
-  padding-right: 25px;
 }
 
 .row {
@@ -115,8 +83,77 @@ nav ul li{
   justify-content: space-around;
 }
 
-.col {
-  flex-basis: 50%;
+.col-2 {
+  flex-basis: 1000%;
   min-width: 300px;
   margin-top: 250px;
 }
+
+.btnDiv{
+  position: center;
+}
+
+.buttonLeft{
+  padding: 20px;
+  margin-left: 550px;
+  margin-top: 20px;
+  width: 9%;
+  background-color: black;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  letter-spacing: 4px;
+}
+
+.buttonRight{
+  padding: 20px;
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 9%;
+  background-color: black;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  letter-spacing: 4px;
+}
+
+.buttonRight:hover{
+  padding: 20px;
+  margin-left: 50px;
+  margin-top: 20px;
+  width: 9%;
+  background-color: palegreen;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  color: black;
+  letter-spacing: 4px;
+}
+
+.buttonLeft:hover {
+  padding: 20px;
+  margin-left: 550px;
+  margin-top: 20px;
+  width: 9%;
+  background-color: #98fb98;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  color: black;
+  letter-spacing: 4px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+}
+
+
