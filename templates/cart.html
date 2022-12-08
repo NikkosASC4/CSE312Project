@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<title>Online HTML Editor</title>
+<head>
+    <link rel="stylesheet" href="../static/css/cart.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+          <h1>
+             Shopping Cart
+          </h1>
+          <div class="table">
+
+            <div class="layout-inline row th">
+              <div class="col col-pro">Product</div>
+              <div class="col col-price align-center ">
+                Price
+              </div>
+              <div class="col col-qty align-center">QTY</div>
+              <div class="col">Total</div>
+            </div>
+            {% autoescape false %}
+    {{carter}}
+    {% endautoescape %}
+
+    </div>
+
+</body>
+</html>

@@ -10,6 +10,7 @@ mongo_client = pymongo.MongoClient("mongo")
 db = mongo_client["cse312"]
 userAccounts = db["accounts"]
 authTokens = db["tokens"]
+cartz= db["cart"]
 
 app = Flask(__name__)
 
@@ -61,6 +62,31 @@ def register_page():
 @app.route('/home', methods=["GET", "POST"])
 def home_page():
     return render_template('home.html')
+
+@app.route('/cart', methods=["GET", "POST"])
+def cart():
+    if request.method == 'POST':
+         item = request.form['Item']
+         category=request.form['Category']
+         price=request.form['Price']
+         cartz.insert_one({"Item": item, "Category": category, "Price":price})
+
+         print("HAHAHAHAH")
+         print(price)
+         return redirect(url_for('cart'))
+    else:
+        mongoz=cartz.find({})
+        carthistory=""
+        grandtotal=0
+        for p in mongoz:
+            carthistory=carthistory+'<div class="layout-inline row th"><div class="col col-pro">'+str(p["Item"])+'</div>'
+            carthistory=carthistory+'<div class="col col-price align-center ">'+"$"+str(p["Price"])+'</div>'
+            carthistory=carthistory+'<div class="col col-qty align-center">'+str(p["Category"])+'</div><div class="col">'+str(p["Price"])+'</div></div>'
+            grandtotal=grandtotal+int(p["Price"])
+        carthistory=carthistory+'<div class="layout-inline row th"><div class="col col-pro">'+"Grand Total is"+'</div>'
+        carthistory=carthistory+'<div class="col col-price align-center ">'+" "+'</div>'
+        carthistory=carthistory+'<div class="col col-qty align-center">'+" "+'</div><div class="col">'+"$"+str(grandtotal)+'</div></div>'
+        return render_template('cart.html',carter=carthistory)
 
 
 @app.route('/settings')
