@@ -98,7 +98,7 @@ def listing():
     if request.method == 'POST':
         for key, value in request.form.items():
             print(f'{key}: {value}')
-    return render_template('listing.html')
+        return render_template('listing.html')
 
     else:
         return render_template('listing.html')
