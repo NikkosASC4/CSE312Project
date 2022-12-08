@@ -271,3 +271,43 @@ img {
   background: #fff;
   border: 1px solid #555;
 }
+
+.item-listing {
+  border: 2px solid black;
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial; 
+}
+
+.name {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.price {
+  color: palegreen;
+  font-size: 16px;
+}
+
+.description {
+  color: white;
+  font-size: 14px;
+}
+
+.item-listing button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.flex-container {
+  display: flex;
+}
