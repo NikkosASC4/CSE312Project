@@ -14,6 +14,7 @@ cartz= db["cart"]
 listings = db["listings"]
 
 app = Flask(__name__)
+# sock = Sock(app)
 
 #Route declaration
 @app.route('/', methods=["GET", "POST"])
@@ -64,6 +65,10 @@ def register_page():
 def home_page():
     return render_template('home.html')
 
+@app.route('/buy', methods=["GET", "POST"])
+def buy():
+    return render_template('buy.html')
+
 @app.route('/cart', methods=["GET", "POST"])
 def cart():
     if request.method == 'POST':
@@ -97,21 +102,15 @@ def settings():
 @app.route('/listing', methods=["GET","POST"])
 def listing():
     if request.method == 'POST':
-         Name = request.form['item-name']
-         Price=request.form['item-price']
-         Discription=request.form['item-desc']
 
-         listings.insert_one({"Name":Name,"Price":Price,"Description":Discription})
-         eachlisting=listings.find({})
-         for p in eachlisting:
-            print(p)
-         print("Name of the item")
-         print(Name)
-         
-
-         return render_template('listing.html')
+        return render_template('listing.html')
 
     else:
+        # cursor = listings.find({})
+        print("test fire")
+        print(listings)
+        for document in listings.find({}, {'_id': False}):
+            print(document)
         return render_template('listing.html')
 
 if __name__ == "__main__":
