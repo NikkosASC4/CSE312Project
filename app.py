@@ -11,6 +11,7 @@ db = mongo_client["cse312"]
 userAccounts = db["accounts"]
 authTokens = db["tokens"]
 cartz= db["cart"]
+listings = db["listings"]
 
 app = Flask(__name__)
 
@@ -96,8 +97,7 @@ def settings():
 @app.route('/listing', methods=["GET","POST"])
 def listing():
     if request.method == 'POST':
-        for key, value in request.form.items():
-            print(f'{key}: {value}')
+
         return render_template('listing.html')
 
     else:
