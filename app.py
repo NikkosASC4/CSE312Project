@@ -67,8 +67,11 @@ def home_page():
 def settings():
     return "hi"
 
-@app.route('/listing')
+@app.route('/listing', methods=["GET","POST"])
 def listing():
+    if request.method == 'POST':
+        for key, value in request.form.items():
+            print(f'{key}: {value}')
     return render_template('listing.html')
 
 if __name__ == "__main__":

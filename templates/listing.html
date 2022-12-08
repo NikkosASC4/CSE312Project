@@ -23,7 +23,7 @@
         </div>
     </div>
     <div id ="listing-div">
-        <form id="list" enctype="multipart/form-data">
+        <form id="list" method="POST" action ="/listing" enctype="multipart/form-data">
             <label for="item-name">Name of item:</label>
             <input type="text" id="item-name" name="item-name"><br>
 
@@ -35,6 +35,7 @@
 
             <label for="item-desc">Please describe the item:</label>
             <input type="text" id="item-desc" name="item-desc"><br>
+            <input type="submit" value="Post">
         </form>
         </form>
     </div>
