@@ -212,4 +212,62 @@ img {
 	background: rgb(107, 197, 107);
 }
 
+.listing-div {
+  font:'Poppins', sans-serif;
+	max-width: 500px;
+	margin: 10px auto;
+	padding: 16px;
+	background: #f6f6f6;
+  border: 3px solid black;
 
+}
+
+.listing-div a{
+	margin: 10px auto;
+	background: #f6f6f6;
+  color: black;
+  letter-spacing: 0px;
+  margin-left: 5px;
+}
+
+.listing-div h1{
+	background: rgb(120, 211, 120);
+	padding: 20px 0;
+	font-size: 145%;
+	font-weight:  bold 300;
+	text-align: center;
+	color: black;
+	margin: -16px -16px 16px -16px;
+  letter-spacing: 5px;
+}
+
+.listing-div input[type="text"]
+{
+	width: 470px;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid rgb(34, 34, 34);
+	padding: 3%;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+
+.listing-div input[type="submit"]{
+	width: 100%;
+	padding: 3%;
+	background: rgb(126, 113, 205);
+	border: 2px solid black;
+	color: black;
+  font-weight: bold;
+}
+.listing-div input[type="submit"]:hover{
+	background: rgb(107, 197, 107);
+}
+
+.listing-div input[type=file] {
+  width: 370px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #555;
+}
