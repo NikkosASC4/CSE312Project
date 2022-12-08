@@ -97,8 +97,19 @@ def settings():
 @app.route('/listing', methods=["GET","POST"])
 def listing():
     if request.method == 'POST':
+         Name = request.form['item-name']
+         Price=request.form['item-price']
+         Discription=request.form['item-desc']
 
-        return render_template('listing.html')
+         listings.insert_one({"Name":Name,"Price":Price,"Description":Discription})
+         eachlisting=listings.find({})
+         for p in eachlisting:
+            print(p)
+         print("Name of the item")
+         print(Name)
+         
+
+         return render_template('listing.html')
 
     else:
         return render_template('listing.html')
