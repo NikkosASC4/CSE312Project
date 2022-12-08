@@ -67,6 +67,9 @@ def home_page():
 def settings():
     return "hi"
 
+@app.route('/listing')
+def listing():
+    return render_template('listing.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000)

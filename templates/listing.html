@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,20 +22,22 @@
             </nav>
         </div>
     </div>
+    <div id ="listing-div">
+        <form id="list" enctype="multipart/form-data">
+            <label for="item-name">Name of item:</label>
+            <input type="text" id="item-name" name="item-name"><br>
 
-    <div class="row">
-        <div class="col-2">
-            <h1>LOOKING FOR SOMETHING? TO GET RID OF ANOTHER?</h1>
-        </div>
+            <label for="item-price">Price:</label>
+            <input type="text" id="item-price" name="item-price"><br>
+
+            <label for="form-file">Image: </label>
+            <input id="form-file" type="file" name="upload"><br>
+
+            <label for="item-desc">Please describe the item:</label>
+            <input type="text" id="item-desc" name="item-desc"><br>
+        </form>
+        </form>
     </div>
-
-
-    <div class="btnDiv">
-        <button class="buttonLeft">BUY</button>
-        <button class="buttonRight">SELL</button>
-        <img src="../static/image/undraw_web_shopping_re_owap.svg" width="460px">
-    </div>
-
 
 </body>
 </html>
