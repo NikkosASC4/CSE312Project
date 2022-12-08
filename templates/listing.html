@@ -22,21 +22,22 @@
             </nav>
         </div>
     </div>
-    <div id ="listing-div">
-        <form id="list" method="POST" action ="/listing" enctype="multipart/form-data">
-            <label for="item-name">Name of item:</label>
-            <input type="text" id="item-name" name="item-name"><br>
 
-            <label for="item-price">Price:</label>
-            <input type="text" id="item-price" name="item-price"><br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-            <label for="form-file">Image: </label>
-            <input id="form-file" type="file" name="upload"><br>
-
-            <label for="item-desc">Please describe the item:</label>
-            <input type="text" id="item-desc" name="item-desc"><br>
-            <input type="submit" value="Post">
-        </form>
+    <div class="listing-div">
+        <h1>SELL AN ITEM</h1>
+        <form action="/listing" id="list" method="post" enctype="multipart/form-data">
+        <input type="text" id="item-name" name="item-name" placeholder="Name Of Item" />
+        <input type="text" id="item-price" name="item-price" placeholder="Price"><br>
+        <a>Upload Image</a>
+        <input id="form-file" type="file" name="upload"><br>
+        <p></p>
+        <input type="text" id="item-desc" name="item-desc" placeholder="Please Describe The Item"><br>
+        <input type="submit" value="Post"/>
         </form>
     </div>
 
