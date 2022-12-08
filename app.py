@@ -14,6 +14,7 @@ cartz= db["cart"]
 listings = db["listings"]
 
 app = Flask(__name__)
+# sock = Sock(app)
 
 #Route declaration
 @app.route('/', methods=["GET", "POST"])
