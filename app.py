@@ -97,10 +97,18 @@ def settings():
 @app.route('/listing', methods=["GET","POST"])
 def listing():
     if request.method == 'POST':
-
+        name = request.form['item-name']
+        price = request.form['item-price']
+        desc = request.form['item-desc']
+        
+        listings.insert_one({"name":name,"price":price,"description":desc})
         return render_template('listing.html')
-
     else:
+        # cursor = listings.find({})
+        print("test fire")
+        print(listings)
+        for document in listings.find({}, {'_id': False}):
+            print(document)
         return render_template('listing.html')
 
 if __name__ == "__main__":
