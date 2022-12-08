@@ -66,7 +66,7 @@ def home_page():
     return render_template('home.html')
 
 @app.route('/buy', methods=["GET", "POST"])
-def home_page():
+def buy():
     return render_template('buy.html')
 
 @app.route('/cart', methods=["GET", "POST"])
