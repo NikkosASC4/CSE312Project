@@ -5,26 +5,65 @@
     <link rel="stylesheet" href="../static/css/cart.css">
 </head>
 <body>
+
     <div class="container">
-        <div class="heading">
-          <h1>
-             Shopping Cart
-          </h1>
-          <div class="table">
+      <div class="navbar">
+          <div class="logo">
+              <img src="../static/image/Impl Logo.png" width="150px" >
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="/home">HOME</a></li>
+                  <li><a href="/login">LOGIN</a></li>
+                  <li><a href="/listing">LISTINGS</a></li>
+                  <li><a href="/register">REGISTER</a></li>
+              </ul>
+          </nav>
+      </div>
+  </div>
 
-            <div class="layout-inline row th">
-              <div class="col col-pro">Product</div>
-              <div class="col col-price align-center ">
-                Price
-              </div>
-              <div class="col col-qty align-center">QTY</div>
-              <div class="col">Total</div>
-            </div>
-            {% autoescape false %}
-    {{carter}}
-    {% endautoescape %}
+  <br>
+  <br>
+  <br>
 
-    </div>
+
+    <div class="shop-container">
+
+      <h1 class="cart-title">Shopping Cart</h1>
+
+      <table id="products">
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>  
+      </table>
+  </div>
 
 </body>
 </html>
