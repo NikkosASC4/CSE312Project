@@ -14,6 +14,7 @@ cartz= db["cart"]
 listings = db["listings"]
 
 app = Flask(__name__)
+# sock = Sock(app)
 
 #Route declaration
 @app.route('/', methods=["GET", "POST"])
@@ -63,6 +64,10 @@ def register_page():
 @app.route('/home', methods=["GET", "POST"])
 def home_page():
     return render_template('home.html')
+
+@app.route('/buy', methods=["GET", "POST"])
+def buy():
+    return render_template('buy.html')
 
 @app.route('/cart', methods=["GET", "POST"])
 def cart():
