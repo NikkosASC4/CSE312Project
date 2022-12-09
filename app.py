@@ -134,29 +134,30 @@ def cart():
 # @login_required
 def profile():
     # Get the logged-in user's username from the session
-    username = session['username']
+    username = userAccounts.find_one({'username': request.form['username']})
+    return render_template('profile.html', user=username)
 
-    return render_template('profile.html', username=username)
 
-
-@app.route('/settings', methods=["POST"])
+@app.route('/settings', methods=['POST', 'GET'])
 # @login_required
 def settings():
-    # if request.method == 'POST':
-    # Get the new username and password from the request
-    new_username = request.form['username']
-    new_password = (request.form['password']).encode()
-    # Validate input with database
-    # Get the current user's information from the database
-    current_user = db.users.find_one({'username': request.form['username']})
+    if request.method == 'POST':
+        # Get the new username and password from the request
+        new_username = request.form['username']
+        new_password = (request.form['password']).encode()
+        # Validate input with database
+        # Get the current user's information from the database
 
-    user = userAccounts.find_one({'username': request.form['username']})
-    user['username'] = new_username
-    generatedSalt = bcrypt.gensalt(10)
-    hashed_password = bcrypt.hashpw(new_password, generatedSalt)
-    userAccounts.update_one({'username': request.form['username']},
-                            {'$set': {'username': new_username, 'password': hashed_password}})
-    return 'Successfully updated username and password!'
+        user = userAccounts.find_one({'username': request.form['username']})
+        user['username'] = new_username
+        generatedSalt = bcrypt.gensalt(10)
+        hashed_password = bcrypt.hashpw(new_password, generatedSalt)
+        userAccounts.update_one({'username': request.form['username']},
+                                {'$set': {'username': new_username, 'password': hashed_password}})
+        return redirect(url_for('home_page'))
+    else:
+        return render_template('settings.html')
+
     # Check if the current user is the owner of the data
     # if current_user['username'] == request.form['username']:
     # Get the user's information from the database
