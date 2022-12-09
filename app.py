@@ -4,14 +4,22 @@ import bcrypt
 import os
 import random
 import hashlib
+import os
+from flask import Flask, flash, request, redirect, url_for
+from werkzeug.utils import secure_filename
 
+UPLOAD_FOLDER = '/templates'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #Declare Database
 mongo_client = pymongo.MongoClient("mongo")
 db = mongo_client["cse312"]
 userAccounts = db["accounts"]
 authTokens = db["tokens"]
-cartz= db["cart"]
-listings = db["listings"]
+cartz= db["cartloz"]
+listings = db["listerlolz"]
 
 app = Flask(__name__)
 # sock = Sock(app)
@@ -67,31 +75,38 @@ def home_page():
 
 @app.route('/buy', methods=["GET", "POST"])
 def buy():
-    return render_template('buy.html')
+    buystuff=""
+    lister=listings.find({})
+    itemlist=""
+    
+    for p in lister:
+
+        itemlist=itemlist+'<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="../static/image/popular-02.jpg" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">'+str(p["Name"])+'</p>'+'<p class="price">'+str(p["Price"])+'</p>'+'<input id="item-name" name="item-name" type="hidden" value="'+str(p["Name"])+'"/>'+'<input name="item-price" id="item-price" type="hidden" value="'+str(p["Price"])+'"\>'+'<input id="item-desc" name="item-desc"type="hidden" value="'+str(p["Discription"])+'"\>'+'<input type="submit" value="Post"/></form></div>'
+    return render_template('buy.html',shop=itemlist)
 
 @app.route('/cart', methods=["GET", "POST"])
 def cart():
     if request.method == 'POST':
-         item = request.form['Item']
-         category=request.form['Category']
-         price=request.form['Price']
-         cartz.insert_one({"Item": item, "Category": category, "Price":price})
+         Name = request.form['item-name']
+         Discription=request.form['item-desc']
+         price=request.form['item-price']
+         cartz.insert_one({"Item": Name, "Discription": Discription, "Price":price})
 
          print("HAHAHAHAH")
          print(price)
-         return redirect(url_for('cart'))
+         return render_template('cart.html')
     else:
         mongoz=cartz.find({})
         carthistory=""
         grandtotal=0
         for p in mongoz:
-            carthistory=carthistory+'<div class="layout-inline row th"><div class="col col-pro">'+str(p["Item"])+'</div>'
-            carthistory=carthistory+'<div class="col col-price align-center ">'+"$"+str(p["Price"])+'</div>'
-            carthistory=carthistory+'<div class="col col-qty align-center">'+str(p["Category"])+'</div><div class="col">'+str(p["Price"])+'</div></div>'
+            carthistory=carthistory+'<tr><td>'+str(p["Item"])+'</td>'
+            carthistory=carthistory+'<td>'+"$"+str(p["Price"])+'</td>'
+            carthistory=carthistory+'<td>'+str(p["Discription"])+'</td><td>'+"$"+str(p["Price"])+'</td></tr>'
             grandtotal=grandtotal+int(p["Price"])
-        carthistory=carthistory+'<div class="layout-inline row th"><div class="col col-pro">'+"Grand Total is"+'</div>'
-        carthistory=carthistory+'<div class="col col-price align-center ">'+" "+'</div>'
-        carthistory=carthistory+'<div class="col col-qty align-center">'+" "+'</div><div class="col">'+"$"+str(grandtotal)+'</div></div>'
+        carthistory=carthistory+'<tr><td>'+"Grand Total is"+'</td>'
+        carthistory=carthistory+'<td></td><td></td>'
+        carthistory=carthistory+'<td>'+"$"+str(grandtotal)+'</td></tr>'
         return render_template('cart.html',carter=carthistory)
 
 
@@ -102,8 +117,15 @@ def settings():
 @app.route('/listing', methods=["GET","POST"])
 def listing():
     if request.method == 'POST':
+         Name = request.form['item-name']
+         Discription=request.form['item-desc']
+         price=request.form['item-price']
+         file = request.files['file']
+         filename = secure_filename(file.filename)
+         
+         listings.insert_one({"Name": Name, "Price": price, "Discription":Discription})
 
-        return render_template('listing.html')
+         return render_template('listing.html')
 
     else:
         # cursor = listings.find({})
