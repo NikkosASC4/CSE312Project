@@ -91,7 +91,8 @@ def buy():
 
     for p in lister:
         print(str(p["image"]))
-        itemlist = itemlist + '<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="data:image/jpeg;base64,' + str(
+        itemlist = itemlist + '<div class="item-listing"><form method="post" action="/cart" ' \
+                              'enctype="multipart/form-data"><img src="data:image/jpeg;base64,' + str(
             p["image"]) + '" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">' + str(
             p["Name"]) + '</p>' + '<p class="price">' + str(
             p["Price"]) + '</p>' + '<input id="item-name" name="item-name" type="hidden" value="' + str(
