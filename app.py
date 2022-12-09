@@ -94,7 +94,7 @@ def buy():
 
     for p in lister:
         print(str(p["image"]))
-        itemlist=itemlist+'<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="data:image/jpeg;base64,'+str(p["image"])+'" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">'+str(p["Name"])+'</p>'+'<p class="price">'+str(p["Price"])+'</p>'+'<input id="item-name" name="item-name" type="hidden" value="'+str(p["Name"])+'"/>'+'<input name="item-price" id="item-price" type="hidden" value="'+str(p["Price"])+'"\>'+'<input id="item-desc" name="item-desc"type="hidden" value="'+str(p["Discription"])+'"\>'+'<input type="submit" value="Post"/></form></div>'
+        itemlist=itemlist+'<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="../static/image/pc.jpeg" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">'+str(p["Name"])+'</p>'+'<p class="price">'+str(p["Price"])+'</p>'+'<input id="item-name" name="item-name" type="hidden" value="'+str(p["Name"])+'"/>'+'<input name="item-price" id="item-price" type="hidden" value="'+str(p["Price"])+'"\>'+'<input id="item-desc" name="item-desc"type="hidden" value="'+str(p["Discription"])+'"\>'+'<input type="submit" value="Post"/></form></div>'
     return render_template('buy.html',shop=itemlist)
 
 
@@ -108,7 +108,7 @@ def cart():
 
          print("HAHAHAHAH")
          print(price)
-         return redirect(url_for('buy'))
+         return render_template('cart.html')
 
     else:
         mongoz = cartz.find({})
