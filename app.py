@@ -37,7 +37,7 @@ app = Flask(__name__)
 # Route declaration
 @app.route('/', methods=["GET", "POST"])
 def index():
-    return redirect(url_for('home_page'))
+    return render_template('home.html')
 
 
 @app.route('/login', methods=["GET", "POST"])
