@@ -91,7 +91,7 @@ def buy():
     buystuff=""
     lister=listings.find({})
     itemlist=""
-    
+
     for p in lister:
 
         itemlist=itemlist+'<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="../static/image/popular-02.jpg" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">'+str(p["Name"])+'</p>'+'<p class="price">'+str(p["Price"])+'</p>'+'<input id="item-name" name="item-name" type="hidden" value="'+str(p["Name"])+'"/>'+'<input name="item-price" id="item-price" type="hidden" value="'+str(p["Price"])+'"\>'+'<input id="item-desc" name="item-desc"type="hidden" value="'+str(p["Discription"])+'"\>'+'<input type="submit" value="Post"/></form></div>'
@@ -190,10 +190,10 @@ def listing():
          price=request.form['item-price']
          file = request.files['file']
          filename = secure_filename(file.filename)
-         
+
          listings.insert_one({"Name": Name, "Price": price, "Discription":Discription})
 
-         return render_template('listing.html')
+         return redirect(url_for('buy'))
 
     else:
         # cursor = listings.find({})
