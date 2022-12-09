@@ -4,6 +4,7 @@ import bcrypt
 import os
 import random
 import hashlib
+from flask_sock import Sock
 
 #Declare Database
 mongo_client = pymongo.MongoClient("mongo")
@@ -14,7 +15,14 @@ cartz= db["cart"]
 listings = db["listings"]
 
 app = Flask(__name__)
-# sock = Sock(app)
+sock = Sock(app)
+
+#Socket Function Declaration
+@sock.route('/echo')
+def echo(sock):
+    while True:
+        data = sock.receive()
+        sock.send(data)
 
 #Route declaration
 @app.route('/', methods=["GET", "POST"])
