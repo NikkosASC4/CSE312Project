@@ -97,7 +97,7 @@ def buy():
             p["Price"]) + '</p>' + '<input id="item-name" name="item-name" type="hidden" value="' + str(
             p["Name"]) + '"/>' + '<input name="item-price" id="item-price" type="hidden" value="' + str(
             p["Price"]) + '"\>' + '<input id="item-desc" name="item-desc"type="hidden" value="' + str(
-            p["Discription"]) + '"\>' + '<input type="submit" value="Post"/></form></div>'
+            p["Discription"]) + '"\>' + '<input type="submit" value="Buy"/></form></div>'
     return render_template('buy.html', shop=itemlist)
 
 
