@@ -93,8 +93,8 @@ def buy():
     itemlist=""
 
     for p in lister:
-
-        itemlist=itemlist+'<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="../static/image/popular-02.jpg" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">'+str(p["Name"])+'</p>'+'<p class="price">'+str(p["Price"])+'</p>'+'<input id="item-name" name="item-name" type="hidden" value="'+str(p["Name"])+'"/>'+'<input name="item-price" id="item-price" type="hidden" value="'+str(p["Price"])+'"\>'+'<input id="item-desc" name="item-desc"type="hidden" value="'+str(p["Discription"])+'"\>'+'<input type="submit" value="Post"/></form></div>'
+        print(str(p["image"]))
+        itemlist=itemlist+'<div class="item-listing"><form method="post" action="/cart" enctype="multipart/form-data"><img src="data:image/jpeg;base64,'+str(p["image"])+'" alt="Insert Alt Text" style="width:100%;height:300px"> <p class="name">'+str(p["Name"])+'</p>'+'<p class="price">'+str(p["Price"])+'</p>'+'<input id="item-name" name="item-name" type="hidden" value="'+str(p["Name"])+'"/>'+'<input name="item-price" id="item-price" type="hidden" value="'+str(p["Price"])+'"\>'+'<input id="item-desc" name="item-desc"type="hidden" value="'+str(p["Discription"])+'"\>'+'<input type="submit" value="Post"/></form></div>'
     return render_template('buy.html',shop=itemlist)
 
 
@@ -188,10 +188,8 @@ def listing():
          Name = request.form['item-name']
          Discription=request.form['item-desc']
          price=request.form['item-price']
-         file = request.files['file']
-         filename = secure_filename(file.filename)
-
-         listings.insert_one({"Name": Name, "Price": price, "Discription":Discription})
+         file = request.files['file'].read()
+         listings.insert_one({"Name": Name, "Price": price, "Discription":Discription, "image":file})
 
          return redirect(url_for('buy'))
 
