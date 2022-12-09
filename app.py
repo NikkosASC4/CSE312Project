@@ -8,29 +8,22 @@ import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
-<<<<<<< HEAD
-UPLOAD_FOLDER = '/templates'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 #Declare Database
-=======
+
 # from flask_login import LoginManager, UserMixin, login_required, login_user
 
 # Declare Database
->>>>>>> 049d5bc767c31b5aded751ab47a39494e25f8980
+
 mongo_client = pymongo.MongoClient("mongo")
 db = mongo_client["cse312"]
 userAccounts = db["accounts"]
 authTokens = db["tokens"]
-<<<<<<< HEAD
+
 cartz= db["cartloz"]
 listings = db["listerlolz"]
-=======
-cartz = db["cart"]
-listings = db["listings"]
->>>>>>> 049d5bc767c31b5aded751ab47a39494e25f8980
+
+
 
 app = Flask(__name__)
 
