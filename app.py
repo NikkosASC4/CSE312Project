@@ -108,7 +108,7 @@ def cart():
 
          print("HAHAHAHAH")
          print(price)
-         return render_template('cart.html')
+         return redirect(url_for('buy'))
 
     else:
         mongoz = cartz.find({})
