@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Registration Login</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
@@ -22,24 +22,24 @@
         </div>
     </div>
 
-  <br>
+    <br>
 
-  <div class="title">
-      <h1>Welcome To IMPL!</h1>
+    <div class="title">
+        <h1>Welcome To IMPL!</h1>
+    </div>
+
+    <br>
+    <br>
+  <div class="settings-form">
+      <h1>SETTINGS</h1>
+     <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username"><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password"><br><br>
+      <input type="submit" value="Submit Changes">
   </div>
 
-  <br>
-  <br>
 
-  <div class="login-form">
-      <h1>REGISTER</h1>
-      <form action="/register" id="login-form" method="post" enctype="multipart/form-data">
-      <input type="text" name="username" placeholder="Username" />
-      <input type="password" name="password" placeholder="Password" />
-      <input type="submit" value="Register"/>
-      </form>
-      <a href="/login">Have An Account?</a>
-  </div>
 
 </body>
 </html>
